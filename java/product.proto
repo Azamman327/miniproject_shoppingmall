@@ -1,0 +1,63 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "shoppingmall";
+
+service ProductInfo {
+  rpc findByCategory(CategoryId) returns (ProductList);
+  rpc buyProduct(Buy) returns (Empty);
+  rpc getPurchaseList(Empty) returns (PurchaseList);
+  rpc getCategories(Empty) returns (CategoryList);
+  rpc getProduct(ProductId) returns (Product);
+  rpc getProductList(Empty) returns (ProductList);
+}
+
+message Empty {
+  string empty = 1;
+}
+
+message CategoryId {
+  int32 value = 1;
+}
+
+message Product {
+  int32 productId = 1;
+  int32 categoryId = 2;
+  string productName = 3;
+  float price = 4;
+  int32 count = 5;
+}
+
+message ProductId {
+  int32 productId = 1;
+}
+
+message ProductList {
+  repeated Product product = 1;
+}
+
+message Buy {
+  Product product = 1;
+  int32 count = 2;
+}
+
+message Purchase {
+  int32 purchaseId = 1;
+  int32 productId = 2;
+  string productName = 3;
+  int32 count = 4;
+  float totalPrice = 5;
+}
+
+message PurchaseList {
+  repeated Purchase purchase = 1;
+}
+
+message Category {
+  int32 categoryId = 1;
+  string name = 2;
+}
+
+message CategoryList {
+  repeated Category category = 1;
+}
