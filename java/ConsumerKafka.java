@@ -8,7 +8,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Properties;
 
-//미완성
 public class ConsumerKafka {
 
     public static void main(String[] args) {
